@@ -12,7 +12,7 @@ export default function ChartWrapper() {
   return (
     <Card>
       <Title>Market Overview</Title>
-      <Text>Real-time market data and trends</Text>
+      <Text>Real-time market data and trends for you</Text>
       <div className="mt-4 h-[200px]">
         <TrendingChart />
       </div>
