@@ -7,12 +7,36 @@ on:
     branches: [ "init" ]
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
-
+    
     steps:
-    - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    
+    - name: Login to Docker Hub (optional)
+      if: github.event_name != 'pull_request'
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKER_HUB_USERNAME }}
+        password: ${{ secrets.DOCKER_HUB_TOKEN }}
+    
+    - name: Build Docker image
+      id: build
+      run: |
+        echo "Building Docker image..."
+        docker build \
+          --file Dockerfile \
+          --tag my-image-name:$(date +%s) \
+          --tag my-image-name:latest \
+          . 2>&1 | tee docker-build.log
+        echo "Docker build completed with exit code $?"
+        cat docker-build.log
+        
+    - name: Push to Docker Hub (optional)
+      if: github.event_name != 'pull_request'
+      run: |
+        docker push my-image-name:latest
