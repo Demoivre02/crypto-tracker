@@ -1,13 +1,12 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
 import { useTheme } from 'next-themes';
 import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
 
 export default function Header() {
   const { theme, setTheme } = useTheme();
-  const [isNavOpen, setIsNavOpen] = useState(false);
+
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background">

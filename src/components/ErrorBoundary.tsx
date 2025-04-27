@@ -16,9 +16,9 @@ export class ErrorBoundary extends Component<Props, State> {
     hasError: false
   };
 
-  public static getDerivedStateFromError(_: Error): State {
-    return { hasError: true };
-  }
+  // public static getDerivedStateFromError(_: Error): State {
+  //   return { hasError: true };
+  // }
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.error('Uncaught error:', error, errorInfo);

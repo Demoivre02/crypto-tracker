@@ -1,73 +1,10 @@
-
+// src/app/projects/page.tsx
 'use client';
 
 import { useState } from 'react';
 import { ProjectList } from '@/components/projects/ProjectList';
-import { CryptoProject } from '@/types';
 import { MagnifyingGlassIcon, ArrowUpIcon, ArrowDownIcon } from '@heroicons/react/24/outline';
-
-// Mock data with more projects
-export const mockProjects: CryptoProject[] = [
-  {
-    id: '1',
-    name: 'DeFi Protocol Alpha',
-    symbol: 'DPA',
-    description: 'Next-generation decentralized finance protocol with advanced yield optimization.',
-    launchDate: '2024-05-01',
-    status: 'upcoming',
-    category: 'DeFi',
-    blockchain: 'BSC',
-    marketCap: undefined,
-    price: undefined,
-    priceChange24h: undefined,
-    volume24h: undefined,
-    socialLinks: {
-      website: 'https://example.com',
-      telegram: 'https://t.me/example',
-    },
-    tags: ['DeFi', 'Yield', 'BSC'],
-  },
-  {
-    id: '2',
-    name: 'NFT Marketplace Beta',
-    symbol: 'NFTB',
-    description: 'Revolutionary NFT marketplace with cross-chain support and AI-powered recommendations.',
-    launchDate: '2024-04-15',
-    status: 'live',
-    category: 'NFT',
-    blockchain: 'BSC',
-    marketCap: 5000000,
-    price: 2.5,
-    priceChange24h: 15.5,
-    volume24h: 1000000,
-    socialLinks: {
-      website: 'https://example.com/nft',
-      telegram: 'https://t.me/nft-example',
-      discord: 'https://discord.gg/example',
-    },
-    tags: ['NFT', 'Marketplace', 'BSC'],
-  },
-  {
-    id: '3',
-    name: 'GameFi World',
-    symbol: 'GFW',
-    description: 'Immersive blockchain gaming platform with play-to-earn mechanics.',
-    launchDate: '2024-06-01',
-    status: 'upcoming',
-    category: 'Gaming',
-    blockchain: 'BSC',
-    marketCap: undefined,
-    price: undefined,
-    priceChange24h: undefined,
-    volume24h: undefined,
-    socialLinks: {
-      website: 'https://example.com/gamefi',
-      telegram: 'https://t.me/gamefi-example',
-      discord: 'https://discord.gg/gamefi',
-    },
-    tags: ['Gaming', 'P2E', 'BSC'],
-  },
-];
+import { mockProjects } from '@/data/mockprojects';
 
 const categories = ['All', 'DeFi', 'NFT', 'Gaming'];
 const statuses = ['All', 'upcoming', 'live', 'ended'] as const;
@@ -191,4 +128,3 @@ export default function ProjectsPage() {
     </div>
   );
 }
-

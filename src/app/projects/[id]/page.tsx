@@ -11,30 +11,49 @@ import Link from 'next/link';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import dynamic from 'next/dynamic';
 import LoadingPage from './loading';
-import { mockProjects } from '../page';
+import { mockProjects } from '@/data/mockprojects';
 
-// Dynamically import chart to avoid SSR issues
 // Dynamically import chart to avoid SSR issues
 const Chart = dynamic(() => import('@/components/charts/TrendingChart').then(mod => mod.default || mod), {
   ssr: false,
   loading: () => <div className="h-full w-full flex items-center justify-center">Loading chart...</div>
 });
 
-export default function ProjectDetailsPage({
-  params,
-}: {
-  params: { id: string };
-}) {
+interface PageProps {
+  params: Promise<{
+    id: string;
+  }>;
+}
+
+export default function ProjectDetailsPage({ params }: PageProps) {
   const [project, setProject] = useState<CryptoProject | null>(null);
   const [loading, setLoading] = useState(true);
+  const [pageId, setPageId] = useState<string | null>(null);
 
   useEffect(() => {
+    // Resolve the Promise to get the id
+    const resolveParams = async () => {
+      try {
+        const resolvedParams = await params;
+        setPageId(resolvedParams.id);
+      } catch (error) {
+        console.error('Error resolving params:', error);
+      }
+    };
+
+    resolveParams();
+  }, [params]);
+
+  useEffect(() => {
+    // Only fetch project when pageId is available
+    if (!pageId) return;
+
     // Simulate API call
     const fetchProject = async () => {
       setLoading(true);
       try {
         // In a real app, this would be an API call
-        const foundProject = mockProjects.find(p => p.id === params.id);
+        const foundProject = mockProjects.find(p => p.id === pageId);
         setProject(foundProject ?? null);
       } catch (error) {
         console.error('Error fetching project:', error);
@@ -44,9 +63,9 @@ export default function ProjectDetailsPage({
     };
 
     fetchProject();
-  }, [params.id]);
+  }, [pageId]);
 
-  if (loading) {
+  if (!pageId || loading) {
     return <LoadingPage />;
   }
 
