@@ -1,4 +1,4 @@
-name: Docker Build & Push
+\name: Docker Build & Push
 
 on:
   push:
@@ -24,4 +24,4 @@ jobs:
           push: true
           tags: |
             ${{ secrets.DOCKER_HUB_USERNAME }}/crypto-trader:latest
-            ${{ secrets.DOCKER_HUB_USERNAME }}/crypto-trader:${{ github.run_id }}
+            ${{ secrets.DOCKER_HUB_USERNAME }}/crypto-trader:${{ github.run_number }}
