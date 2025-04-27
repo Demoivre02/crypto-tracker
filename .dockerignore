@@ -1,0 +1,35 @@
+# Versioning and metadata
+.git
+.gitignore
+.github
+
+# Dependencies
+node_modules
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Build artifacts
+.next
+out
+build
+dist
+
+# Environment variables
+.env*
+!.env.example
+
+# Development tools
+.vscode
+.idea
+*.sublime-project
+*.sublime-workspace
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Project files
+README.md
+LICENSE
+
