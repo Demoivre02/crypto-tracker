@@ -1,7 +1,11 @@
 "use client"
 
-export default function Markets() {
+export default function page() {
   return (
-    <div>market page in progress</div>
+    <div className="m-auto h-[50vh] flex justify-center items-center">
+        <div className="">
+            <p className="text-3xl font-bold m-auto">Markets in progress</p>
+        </div>
+    </div>
   )
 }
