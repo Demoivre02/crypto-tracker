@@ -23,5 +23,5 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.DOCKER_HUB_USERNAME }}/crypto-tracker:latest
-            ${{ secrets.DOCKER_HUB_USERNAME }}/crypto-tracker:$(date +%s)
+            ${{ secrets.DOCKER_HUB_USERNAME }}/crypto-trader:latest
+            ${{ secrets.DOCKER_HUB_USERNAME }}/crypto-trader:${{ github.run_id }}
