@@ -24,16 +24,20 @@ export interface Project {
 export interface CryptoProject {
   id: string;
   name: string;
-  symbol: string;
+  symbol: string | undefined;
   description: string;
-  launchDate: string;
+  totalRaised: number | undefined;
+  preValuation: number | undefined;
+  round: string;
+  launchDate: string | undefined;
   status: 'upcoming' | 'live' | 'ended';
   category: string;
-  blockchain: string;
+  blockchain: string | undefined;
   marketCap?: number;
   price?: number;
   priceChange24h?: number;
   volume24h?: number;
+  investorCount: number | undefined;
   socialLinks: {
     website?: string;
     twitter?: string;
