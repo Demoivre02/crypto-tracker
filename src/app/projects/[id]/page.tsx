@@ -18,7 +18,7 @@ export default function ProjectDetailPage() {
     const fetchProject = () => {
       setLoading(true);
       // Find the project in our mock data
-      const projectId = typeof params.id === 'string' ? params.id : Array.isArray(params.id) ? params.id[0] : '';
+      const projectId = typeof params!.id === 'string' ? params!.id : Array.isArray(params!.id) ? params!.id[0] : '';
       const foundProject = mockProjects.find((p) => p.id === projectId);
       
       if (foundProject) {
@@ -29,7 +29,7 @@ export default function ProjectDetailPage() {
     };
 
     fetchProject();
-  }, [params.id]);
+  }, [params]);
 
   const formatLaunchDate = (date: string | undefined) => {
     if (!date) return 'TBA';
@@ -127,7 +127,7 @@ export default function ProjectDetailPage() {
     return (
       <div className="container mx-auto p-4">
         <h1 className="text-2xl font-bold mb-4">Project Not Found</h1>
-        <p>The project you're looking for doesn't exist or has been removed.</p>
+        <p>The project you&apos;re looking for doesn&apos;t exist or has been removed.</p>
         <Link href="/projects" className="text-blue-500 hover:underline mt-4 inline-block">
           <ArrowLeftIcon className="h-4 w-4 inline mr-1" />
           Back to Projects

@@ -29,7 +29,7 @@ export interface CryptoProject {
   totalRaised: number | undefined;
   preValuation: number | undefined;
   round: string;
-  launchDate: string | undefined;
+  launchDate: string | any;
   status: 'upcoming' | 'live' | 'ended';
   category: string;
   blockchain: string | undefined;
